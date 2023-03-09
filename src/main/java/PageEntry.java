@@ -28,7 +28,6 @@ public class PageEntry implements Comparable<PageEntry> {
         else return 0;
     }
 
-
     @Override
     public String toString() {
         return pdfName + " - " + page + " - " + count + "\n";

@@ -44,11 +44,13 @@ public class Server {
                      BufferedReader in = new BufferedReader
                              (new InputStreamReader(socket.getInputStream()));
                      PrintWriter out = new PrintWriter(socket.getOutputStream())) {
+
                     String word = in.readLine();
                     List<PageEntry> result  = searchEngine.search(word)
                             .stream()
                             .sorted(Collections.reverseOrder())
                             .collect(Collectors.toList());
+
                     Gson gson = new Gson();
                     out.println(gson.toJson(result));
                     System.out.println("Завершен поиск по запросу: " + word);
