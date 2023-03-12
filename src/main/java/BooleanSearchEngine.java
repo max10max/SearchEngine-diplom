@@ -38,13 +38,17 @@ public class BooleanSearchEngine implements SearchEngine {
                 }
             }
         }
+        for(Map.Entry<String, List<PageEntry>> sortedMap : resultMap.entrySet()){
+            resultMap.replace(sortedMap.getKey(), sortedMap.getValue()
+                    .stream()
+                    .sorted(Collections.reverseOrder())
+                    .collect(Collectors.toList()));
+        }
+
     }
 
     @Override
     public List<PageEntry> search(String word) {
-        return resultMap.get(word.toLowerCase())
-                .stream()
-                .sorted(Collections.reverseOrder())
-                .collect(Collectors.toList());
+        return resultMap.get(word.toLowerCase());
     }
 }
