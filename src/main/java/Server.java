@@ -46,10 +46,7 @@ public class Server {
                      PrintWriter out = new PrintWriter(socket.getOutputStream())) {
 
                     String word = in.readLine();
-                    List<PageEntry> result  = searchEngine.search(word)
-                            .stream()
-                            .sorted(Collections.reverseOrder())
-                            .collect(Collectors.toList());
+                    List<PageEntry> result  = searchEngine.search(word);
 
                     Gson gson = new Gson();
                     out.println(gson.toJson(result));
